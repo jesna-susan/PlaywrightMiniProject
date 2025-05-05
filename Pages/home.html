@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - MySite</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- Custom Drawer -->
+  <div class="navbar">
+    <button class="menu-button" onclick="toggleDrawer()">&#9776;</button>
+    <span>Home</span>
+  </div>
+
+  <div id="drawer" class="drawer">
+    <h3>Menu</h3>
+    <a href="./home.html">Home</a>
+    <a href="./services.html">Services</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./about.html">About</a>
+  </div>
+
+  <div class="container">
+    <h2>Questionnaire</h2>
+    <form id="questionnaireForm">
+      <label for="topic">What topic do you want to learn more about?</label>
+      <input type="text" id="topic" required>
+
+      <p>Preferred learning style:</p>
+      <input type="radio" name="style" id="video" value="Video">
+      <label for="video">Video</label>
+      <input type="radio" name="style" id="text" value="Text">
+      <label for="text">Text</label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleDrawer() {
+      const drawer = document.getElementById("drawer");
+      drawer.classList.toggle("open");
+    }
+
+    document.getElementById('questionnaireForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Thank you for your response!");
+    });
+  </script>
+</body>
+</html>
