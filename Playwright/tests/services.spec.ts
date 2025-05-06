@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Page should have correct title', async ({ page }) => {
-  await expect(page).toHaveTitle('Services - MySite');
+  await expect(page).toHaveTitle('Services - InternHub');
 });
 
 test('Navbar should have 4 navigation links', async ({ page }) => {
@@ -17,7 +17,7 @@ test('Main heading should be "Our Services"', async ({ page }) => {
 });
 
 test('Service list should contain 4 items', async ({ page }) => {
-  await expect(page.locator('ul > li')).toHaveCount(8);
+  await expect(page.locator('ul > li')).toHaveCount(4);
 });
 
 test('Each service item should be visible and not empty', async ({ page }) => {
@@ -30,11 +30,12 @@ test('Each service item should be visible and not empty', async ({ page }) => {
   }
 });
 
-test('Services list should display all services', async ({ page }) => {
-    const servicesList = page.locator('text=Our Services').locator('xpath=following-sibling::ul[1]');
-    await expect(servicesList).toContainText('Web Development');
-    await expect(servicesList).toContainText('Mobile App Design');
-    await expect(servicesList).toContainText('UI/UX Consulting');
-    await expect(servicesList).toContainText('SEO & Marketing');
-  });
+test('Services accordion should display all service categories', async ({ page }) => {
+    const accordion = page.locator('.accordion');
+  
+    await expect(accordion).toContainText('Coding Practice');
+    await expect(accordion).toContainText('Career Roadmap');
+    await expect(accordion).toContainText('1:1 Mentoring');
+});
+  
   
