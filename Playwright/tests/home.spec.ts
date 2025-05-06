@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Home Page Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://127.0.0.1:5500/Pages/home.html?'); // Ensure baseURL is set
+    await page.goto('home.html?'); 
   });
 
   test('Navbar links are visible and correct', async ({ page }) => {

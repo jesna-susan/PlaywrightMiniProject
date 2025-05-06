@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/Pages/register.html');
+  await page.goto('register.html');
 });
 
 test('Page should load and display heading', async ({ page }) => {

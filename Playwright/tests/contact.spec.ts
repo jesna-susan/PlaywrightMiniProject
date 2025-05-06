@@ -5,31 +5,50 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Page should have correct title', async ({ page }) => {
-  await expect(page).toHaveTitle('Contact Us - MySite');
+  await expect(page).toHaveTitle('Contact Us - InternHub');
 });
 
-test('Navbar should have 4 navigation links', async ({ page }) => {
-  await expect(page.locator('nav .nav-link')).toHaveCount(4);
-});
-
-test('Main heading should be "Contact Us"', async ({ page }) => {
-  await expect(page.getByRole('heading', { name: 'Contact Us' })).toBeVisible();
-});
-
-test('Contact form should contain 3 fields', async ({ page }) => {
-  const formFields = page.locator('form .form-control');
-  await expect(formFields).toHaveCount(3);
-});
-
-test('Send button should be enabled', async ({ page }) => {
-  const sendButton = page.locator('button[type="submit"]');
-  await expect(sendButton).toBeEnabled();
-});
-
-
-test('Email field should accept valid email input', async ({ page }) => {
-    const emailField = page.locator('input[type="email"]');
-    await emailField.fill('test@example.com');
-    await expect(emailField).toHaveValue('test@example.com');
+test('Phone and email are visible', async ({ page }) => {
+    await expect(page.locator('text=+91 98765 43210')).toBeVisible();
+    await expect(page.locator('text=support@internhub.com')).toBeVisible();
   });
+  
+
+  test('All input fields are visible', async ({ page }) => {
+    await expect(page.locator('#name')).toBeVisible();
+    await expect(page.locator('#email')).toBeVisible();
+    await expect(page.locator('#query')).toBeVisible();
+  });
+  
+
+  test('Submit button is enabled', async ({ page }) => {
+    await expect(page.locator('button[type="submit"]')).toBeEnabled();
+  });
+  
+
+test('Submitting form shows thank-you message', async ({ page }) => {
+    await page.fill('#name', 'John Doe');
+    await page.fill('#email', 'john@example.com');
+    await page.fill('#query', 'Need help with internship options.');
+    await page.click('button[type="submit"]');
+    await expect(page.locator('#thankYouMessage')).toBeVisible();
+  });
+
+  test('Form fields reset after submission', async ({ page }) => {
+    await page.fill('#name', 'Jane');
+    await page.fill('#email', 'jane@example.com');
+    await page.fill('#query', 'Just saying hi!');
+    await page.click('button[type="submit"]');
+  
+    // Check all fields are cleared
+    const name = await page.inputValue('#name');
+    const email = await page.inputValue('#email');
+    const query = await page.inputValue('#query');
+  
+    expect(name).toBe('');
+    expect(email).toBe('');
+    expect(query).toBe('');
+  });
+  
+  
   
