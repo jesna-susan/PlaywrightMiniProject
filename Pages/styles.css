@@ -1,90 +1,83 @@
+
+.login-body {
+  background-color: #e9ecef;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    margin-top: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .form-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-  }
-  
-  input, textarea, button {
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .navbar {
-    max-width: 120px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    justify-content: space-between;
-  }
-  
-  .drawer {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    width: 200px;
-    height: 100%;
-    background-color: #eee;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
-    transition: left 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .drawer.open {
-    left: 0;
-  }
-  
-  
-  a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+  background: #85e9ff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background-color: #ffffffc7;
+  border: 1px solid #dee2e6;
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+input.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+button.btn {
+  border-radius: 0.5rem;
+}
+
+.company-logo {
+  height: 60px;
+  object-fit: contain;
+}
+
+.testimonial-box {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 100%;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.lpa-tag {
+  font-size: 0.9rem;
+  background-color: #d1e7dd;
+  color: #0f5132;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.accordion-button {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.coding-header {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.roadmap-header {
+  background-color: #d4edda;
+  color: #155724;
+}
+.mentoring-header {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+
+
+
