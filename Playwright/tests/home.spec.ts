@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Home Page Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('home.html?'); 
+    await page.goto('home.html'); 
   });
 
   test('Navbar links are visible and correct', async ({ page }) => {
@@ -14,15 +14,8 @@ test.describe('Home Page Tests', () => {
   });
 
   test('Main header and welcome text are present', async ({ page }) => {
-
-  
-    // Check for the main header
     await expect(page.getByRole('heading', { name: 'InternHub' })).toBeVisible();
-  
-    // Check for the styled welcome message
     await expect(page.getByRole('heading', { name: /Welcome to Intern Hub 🚀/ })).toBeVisible();
-  
-    // Check for the lead paragraph
     await expect(page.locator('text=Your one-stop destination to discover, apply, and grow')).toBeVisible();
   });
 

@@ -1,3 +1,37 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - InternHub</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="login-body">
+  <div class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 100%; max-width: 500px;">
+      <h2 class="text-center mb-4 text-primary">Login to InternHub</h2>
+    <form action="./home.html" method="GET" class="w-50 mx-auto mt-4" >
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <button type="submit" onclick="validateForm()" class="btn btn-primary w-100">Login</button>
+      <p class="mt-2 text-center">
+        Don't have an account?
+        <a href="./register.html" class="text-decoration-none text-success fw-semibold">Create!</a>
+      </p>
+      
+    </form>
+  </div>
+</body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,47 +41,47 @@
   <link rel="stylesheet" href="./styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<script>
-  const form = document.querySelector('form');
-  form.addEventListener('submit', function (e) {
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-    
-    // Remove previous alerts
-    const existingAlert = document.getElementById('alert-msg');
-    if (existingAlert) existingAlert.remove();
-
-    if (!username.value || !password.value) {
-      e.preventDefault();
-      const alert = document.createElement('div');
-      alert.id = 'alert-msg';
-      alert.className = 'alert alert-danger mt-2 text-center';
-      alert.textContent = 'Both username and password are required.';
-      form.appendChild(alert);
-    }
-  });
-</script>
 
 <body class="login-body">
   <div class="container mt-5 d-flex justify-content-center align-items-center">
     <div class="card shadow-lg p-4 rounded-4" style="width: 100%; max-width: 500px;">
       <h2 class="text-center mb-4 text-primary">Login to InternHub</h2>
-    <form action="./home.html" method="GET" class="w-50 mx-auto mt-4">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" required>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" required>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Login</button>
-      <p class="mt-2 text-center">
-        Don't have an account?
-        <a href="./register.html" class="text-decoration-none text-success fw-semibold">Create!</a>
-      </p>
-      
-    </form>
+      <form class="w-75 mx-auto mt-4" onsubmit="return validateForm(event)">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <p class="mt-2 text-center">
+          Don't have an account?
+          <a href="./register.html" class="text-decoration-none text-success fw-semibold">Create!</a>
+        </p>
+      </form>
+    </div>
   </div>
+
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+
+      if (!passwordRegex.test(password)) {
+        alert("Password must be at least 8 characters long and include atleast one uppercase letter, one number, and one special character.");
+        return false;
+      }
+
+      // ✅ Redirect to home page if valid
+      window.location.href = "./home.html";
+      return true;
+    }
+  </script>
 </body>
 </html>
